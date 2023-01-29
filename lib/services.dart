@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:ibook/models/product_new_model.dart';
+import 'package:ibook/models/detail_book_model.dart';
 import 'config/text_strings.dart';
 
 class Services {
@@ -35,4 +36,18 @@ class Services {
       log(e.toString());
     }
   }
+
+  // Future<List> getBookDetailByValue(String data) async {
+  //   try {
+  //     var url = "$baseUrl/books/$data";
+  //     var response = await dio.get(url);
+  //     if (response.statusCode == 200) {
+  //       var _model = BookDetail.fromJson(response.data);
+  //       var listData = _model.toJson();
+  //       return listData;
+  //     }
+  //   } catch (e) {
+  //     log(e.toString());
+  //   }
+  // }
 }

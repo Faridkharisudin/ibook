@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ibook/config/app_theme.dart';
 import 'package:ibook/screens/detail/detail.view.dart';
+import 'package:ibook/screens/home/home.dart';
 import 'package:ibook/screens/splash/splash_screen.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: AppTheme.themeData,
       debugShowCheckedModeBanner: false,
-      home: DetailView(),
+      // home: DetailView(),
+      home: HomePage(),
     );
   }
 }
