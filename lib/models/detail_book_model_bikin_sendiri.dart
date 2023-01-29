@@ -5,13 +5,12 @@ class EveryDetailBook {
   final String publisher;
   final String isbn13;
   final String pages;
+  final String year;
   final String rating;
   final String desc;
   final String price;
   final String image;
   final String url;
-  final String pdf1;
-  final String pdf2;
 
   EveryDetailBook({
     required this.title,
@@ -20,13 +19,13 @@ class EveryDetailBook {
     required this.publisher,
     required this.isbn13,
     required this.pages,
+    required this.year,
     required this.rating,
     required this.desc,
     required this.price,
     required this.image,
     required this.url,
-    required this.pdf1,
-    required this.pdf2,
+    
   });
 }
 

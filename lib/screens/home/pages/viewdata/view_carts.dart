@@ -5,35 +5,42 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ibook/config/app_color.dart';
 import 'package:ibook/models/detail_book_model.dart';
 import 'package:ibook/models/detail_book_model_bikin_sendiri.dart';
-import 'package:ibook/screens/detail/detail.view.dart';
+import 'package:ibook/screens/detail/detail_view.dart';
 import 'package:ibook/services.dart';
 import 'package:ibook/services_detail.dart';
 
-class ViewCarts extends StatelessWidget {
+class ViewCarts extends StatefulWidget {
   List<dynamic> getData;
 
   ViewCarts({Key? key, required this.getData}) : super(key: key);
 
   @override
+  State<ViewCarts> createState() => _ViewCartsState();
+}
+
+class _ViewCartsState extends State<ViewCarts> {
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 20),
       child: ListView.builder(
-        itemCount: getData.length,
+        itemCount: widget.getData.length,
         shrinkWrap: true,
         physics: const ScrollPhysics(),
         itemBuilder: (BuildContext context, int index) {
           return InkWell(
             onTap: () async {
               EveryDetailBook? result =
-                  await ServicesDetails.getByIsbn(getData[index].isbn13);
+                  await ServicesDetails.getByIsbn(widget.getData[index].isbn13);
               if (result != null) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DetailView(getData: result),
-                  ),
-                );
+                setState(() {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DetailView(getData: result),
+                    ),
+                  );
+                });
               }
             },
             child: Padding(
@@ -48,7 +55,7 @@ class ViewCarts extends StatelessWidget {
                         color: Colors.transparent,
                         borderRadius: BorderRadius.circular(20)),
                     child: Image.network(
-                      "${getData[index].image}",
+                      "${widget.getData[index].image}",
                       width: 64.0,
                       height: 64.0,
                       fit: BoxFit.cover,
@@ -65,7 +72,7 @@ class ViewCarts extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "${getData[index].title}",
+                                "${widget.getData[index].title}",
                                 overflow: TextOverflow.fade,
                                 maxLines: 2,
                                 style: GoogleFonts.poppins(
@@ -80,7 +87,7 @@ class ViewCarts extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 6.0),
                         child: Text(
-                          "${getData[index].price}",
+                          "${widget.getData[index].price}",
                           style: GoogleFonts.poppins(
                             fontSize: 14,
                             fontWeight: FontWeight.w200,

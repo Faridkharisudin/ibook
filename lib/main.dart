@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ibook/config/app_theme.dart';
-import 'package:ibook/screens/detail/detail.view.dart';
+import 'package:ibook/screens/detail/detail_view.dart';
 import 'package:ibook/screens/home/home.dart';
 import 'package:ibook/screens/splash/splash_screen.dart';
 import 'package:intl/intl.dart';
@@ -20,8 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: AppTheme.themeData,
       debugShowCheckedModeBanner: false,
-      // home: DetailView(),
-      home: HomePage(),
+      home: SplashScreen(),
     );
   }
 }

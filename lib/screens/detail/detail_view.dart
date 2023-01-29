@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:ibook/config/app_color.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ibook/models/detail_book_model.dart';
 import 'package:ibook/models/detail_book_model_bikin_sendiri.dart';
 import 'package:ibook/widgets/container_detail_view.dart';
 import 'package:ibook/widgets/every_text.dart';
 
 class DetailView extends StatelessWidget {
   final EveryDetailBook getData;
-  DetailView({Key? key, required this.getData}) : super(key: key);
+  const DetailView({Key? key, required this.getData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +37,10 @@ class DetailView extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.44,
                 decoration: BoxDecoration(color: AppColor.mainGrey),
+                child: Image.network(
+                  "${getData.image}",
+                  fit: BoxFit.contain,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(12.0),
@@ -67,7 +70,7 @@ class DetailView extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 8.0),
                       child: EveryText(
-                        word: "HARGA",
+                        word: "${getData.price}",
                         sizeWord: 18,
                         weightWord: FontWeight.w800,
                       ),
@@ -81,11 +84,14 @@ class DetailView extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ContainerDetailView(word1: "Year", word2: "2015"),
+                      ContainerDetailView(
+                          word1: "Year", word2: "${getData.year}"),
                       const VerticalDivider(),
-                      ContainerDetailView(word1: "Pages", word2: "384"),
+                      ContainerDetailView(
+                          word1: "Pages", word2: "${getData.pages}"),
                       const VerticalDivider(),
-                      ContainerDetailView(word1: "Rating", word2: "5"),
+                      ContainerDetailView(
+                          word1: "Rating", word2: "${getData.rating}"),
                     ],
                   ),
                 ),
@@ -100,8 +106,7 @@ class DetailView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       EveryText(
-                        word:
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. D",
+                        word: "${getData.desc}",
                         sizeWord: 18.0,
                         weightWord: FontWeight.w400,
                       ),
@@ -109,29 +114,29 @@ class DetailView extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColor.mainBlack,
-                    elevation: 2,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                  child: Container(
-                    height: 60,
-                    width: MediaQuery.of(context).size.width,
-                    child: Center(
-                      child: EveryText(
-                          word: "See PDF Example",
-                          sizeWord: 18.0,
-                          weightWord: FontWeight.w700),
-                    ),
-                  ),
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.all(12.0),
+              //   child: ElevatedButton(
+              //     onPressed: () {},
+              //     style: ElevatedButton.styleFrom(
+              //       backgroundColor: AppColor.mainBlack,
+              //       elevation: 2,
+              //       shape: RoundedRectangleBorder(
+              //         borderRadius: BorderRadius.circular(20),
+              //       ),
+              //     ),
+              //     child: Container(
+              //       height: 60,
+              //       width: MediaQuery.of(context).size.width,
+              //       child: Center(
+              //         child: EveryText(
+              //             word: "See PDF Example",
+              //             sizeWord: 18.0,
+              //             weightWord: FontWeight.w700),
+              //       ),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),
